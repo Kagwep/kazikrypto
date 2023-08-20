@@ -67,19 +67,31 @@ graph LR;
 ```
 
 ## Installation and Setup
+#### prerequisites
+- node v18
+- bash
+- git
+  
+clone and run web app locally
 
+##### option 1
+- unix and linux systems
 ```bash
-git clone https://github.com/TwigaDEVs/kazikrypto.git && \ 
-cd kazikrypto
+curl -sL https://raw.githubusercontent.com/twigadevs/kazikrypto/kazi/run-app.sh | bash
 ```
-...
+##### option 2
+clone the git hub repo
+```bash
+git clone https://github.com/TwigaDEVs/kazikrypto.git && cd kazikrypto
 
-## Usage
 ```
-cd  web-frontend && npm install
+```bash
+cd web-frontend && npm install
+
 ```
-```
-npm run dev
+```bash
+ npm run dev
+
 ```
 
 ...
