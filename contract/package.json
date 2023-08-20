@@ -1,0 +1,24 @@
+{
+  "name": "kazikrypto",
+  "version": "1.0.0",
+  "description": "Description: The use case involves building a freelancing platform on the Ethereum blockchain using React Native for Android application development. The platform will utilize Infura, MetaMask SDK, MetaMask snaps, and Linea to enable cross-chain functionality and seamless integration with the Ethereum network. The platform aims to connect freelancers and clients, facilitating secure and transparent transactions while leveraging the benefits of blockchain technology.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bn.js": "^5.2.1",
+    "chai": "^4.3.7",
+    "chai-bn": "^0.3.1",
+    "solidity-coverage": "^0.7.22"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.13",
+    "dotenv": "^16.3.1",
+    "install": "^0.13.0",
+    "web3": "^4.0.3"
+  }
+}

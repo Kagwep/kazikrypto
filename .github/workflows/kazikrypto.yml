@@ -1,0 +1,115 @@
+name: CI
+on: push
+
+jobs:
+
+  # check-coverage:
+
+  #   runs-on: ubuntu-latest
+   
+  #   steps: 
+  #   - uses: actions/checkout@v3
+  #   - name: Use Node.js
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: "14.x"
+  #   - name: Install Truffle and solidity coverage 
+    
+  #     run: npm install -g truffle 
+  #   - name: run first test coverage
+  #     run: | 
+  #      pwd
+  #      ls
+  #      cd contract
+  #      bash ./check-coverage.sh
+
+  #   - name: run second test coverage
+  #     run: |
+  #      cd contaract
+  #      bash ./check-tests.sh
+  # check-coverage-tests2:
+
+    # runs-on: ubuntu-latest
+   
+    # steps: 
+    # - uses: actions/checkout@v3
+    # - name: Use Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: "14.x"
+    # - name: Install Truffle and solidity coverage 
+    
+    #   run: npm install -g truffle 
+    
+    # - name: run second test coverage
+    #   run: |
+    #    cd contaract
+    #    bash ./check-tests.sh
+     
+  test:
+    # needs: coverage
+  
+
+    runs-on: ubuntu-latest
+
+    services:
+      ganache:
+        image: trufflesuite/ganache-cli
+        ports:
+          - 8545:8545
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: "16.x"
+    - name: Install Truffle and solidity coverage 
+     
+      run: npm install -g truffle   
+    - name: install packages
+      run: cd contract && npm install
+
+    # - run: pwd
+
+
+    # - name: Check Test Coverage
+    #   id: coverage
+    #   run: |
+    #     cd contract
+    #     truffle run coverage  --verbose
+    #     coverage_pct=$(jq .total.lines.pct coverage/contracts/report.json)
+    
+    #     if [ "$coverage_pct" -lt "100" ]; then
+    #       echo "::error ::Coverage of ${coverage_pct}% is below 100% target."
+    #       exit 1
+    #     fi
+        
+    #     echo "::set-output name=coverage::${coverage_pct}"
+    
+    # # - name: Fail if coverage < 100%
+    # #   if: steps.coverage.outputs.coverage < 100
+    # #   run: exit 1
+    # # // "solidity-coverage": "^0.7.22"
+
+    - name: Run Tests
+      run: cd contract && truffle test --network ganache
+
+  # merge:
+
+  #       needs: test
+  #       if: ${{ success() }}
+    
+  #       runs-on: ubuntu-latest
+    
+  #       steps:
+        
+  #       - uses: actions/checkout@v2
+        
+  #       - name: Merge to main
+  #         uses: devmasx/merge-branch@v1.4.0
+  #         with:
+  #           token: ${{ secrets.ADMIN_TOKEN }}
+  #           type: now
+  #           label_name: 'auto-merged'
+  #           target_branch: main

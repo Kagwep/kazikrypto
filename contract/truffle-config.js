@@ -1,3 +1,5 @@
+
+require("dotenv").config();
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -23,6 +25,7 @@
 // const infuraProjectId = process.env["INFURA_PROJECT_ID"];
  
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 module.exports = {
   /**
@@ -34,19 +37,45 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
+  
 
   networks: {
-    // Useful for testing. The `development` name is special - truffle uses it by default
-    // if it's defined here and no other network is specified at the command line.
-    // You should run a client (like ganache, geth, or parity) in a separate terminal
-    // tab if you use this network and you must also set the `host`, `port` and `network_id`
-    // options below to some value.
-    //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    ganache: {
+      network_id: "*",
+      host: "localhost",
+      port: 8545, // Standard Ethereum port
+    },
+
+    linea: {
+      provider: function () {
+        return new HDWalletProvider({
+          privateKeys: [process.env.PRIVATE_KEY],
+          provider: `https://linea-goerli.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+        });
+      },
+      network_id: 59140,
+    },
+
+    coverage: {
+      host: "localhost",
+      network_id: "*",
+      port: 8545,
+      gas: 0xfffffffffff,
+      gasPrice: 0x01,
+      ganacheOptions: {
+        host: "ganache",
+        port: 8545,
+        network_id: "*",
+        version: "7.3.2",
+      },
+    },
+
+    development: {
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 7545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+      gas: 15000000,
+    },
     //
     // goerli: {
     //   provider: () => new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/${infuraProjectId}`),
@@ -63,7 +92,14 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.13",      // Fetch exact version from solc-bin
-    }
-  }
+      version: "0.8.11",
+      settings: {
+        optimizer: {
+          enabled: true, // Default: false
+          runs: 200, // Default: 200
+        },
+      },
+    },
+  },
+  plugins: ["solidity-coverage"],
 };
