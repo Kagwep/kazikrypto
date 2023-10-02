@@ -66,6 +66,19 @@ graph LR;
 
 ```
 
+## Bounties
+1. Infura and Beyond
+2. Mobile Fun with MetaMask SDK
+3. IYKYK Linea Edition
+4. Dapp That Slaps, No Cap 
+
+## links 
+- infura rpc : https://linea-goerli.infura.io/v3/
+- infura ipfs : https://hambre.infura-ipfs.io/
+- deployed contract: 
+https://explorer.goerli.linea.build/address/0x2C0Bf8f9014cAFbC9dC56b524D9069CE505414Ae
+- web app frontend: https://kazikrypto.vercel.app/
+...
 ## Installation and Setup
 #### prerequisites
 - node v18
@@ -109,6 +122,8 @@ cd web-frontend && npm install
 
 This project consists of a Solidity smart contract and a React frontend application that interacts with it via MetaMask.
 #### Smart Contract overview
+ Deployed smart contract infura link : 
+https://explorer.goerli.linea.build/address/0x2C0Bf8f9014cAFbC9dC56b524D9069CE505414Ae
 
 The smart contract is written in Solidity and contains the core logic and state of the application. It is deployed on the Ethereum blockchain. Main functions:
 - `addNewFreelancer()` - Allows adding a new freelancer profile  
@@ -172,7 +187,10 @@ The contract uses events like ValueSet and ValueChanged to emit notifications wh
 
 #### Frontend Overview
 
+
 The frontend React app provides the user interface and interacts with the deployed smart contract.
+- deployed frontend ui  [web app link](https://kazikrypto.vercel.app/)
+
 #### Key Functions
 
 The frontend UI is built using React and provides forms and views to interact with the smart contract functions:
@@ -273,6 +291,12 @@ Pull requests should target the develop branch. Follow these steps:
 ...
 
 ## Contact Information
-- twigadevs@gmail.com
+- group mail:twigadevs@gmail.com [github](https://github.com/TwigaDEVs)
+- peter: kagwepeter07@gmail.com [github](https://github.com/Kagwep)
+- felix: felixawere01@gmail.com [github](https://github.com/Felabs1)
+- onchezz: brianonchezz@gmail.com [github](https://github.com/onchezz)
+- Ted: ogolated00@gmail.com [github](https://github.com/Ted1166)
+
+
 
 ...
